@@ -28,22 +28,22 @@ def get_name():
 
     # 로그인
     is_xpath_exist(driver, '//*[@id="f_code"]')
-    driver.find_element_by_xpath('//*[@id="f_code"]').send_keys(loginID_1)
-    driver.find_element_by_xpath('//*[@id="id"]').send_keys(loginID_2)
-    driver.find_element_by_xpath('//*[@id="pwd"]').send_keys(loginID_3)
-    driver.find_element_by_xpath('//*[@id="content"]/section[2]/div[1]/div[2]/div/div[3]/a[1]').click()
+    driver.find_element('xpath', '//*[@id="f_code"]').send_keys(loginID_1)
+    driver.find_element('xpath', '//*[@id="id"]').send_keys(loginID_2)
+    driver.find_element('xpath', '//*[@id="pwd"]').send_keys(loginID_3)
+    driver.find_element('xpath', '//*[@id="content"]/section[2]/div[1]/div[2]/div/div[3]/a[1]').click()
 
     driver.switch_to.window(driver.window_handles[-1])
     driver.close()
     driver.switch_to.window(driver.window_handles[-1])
 
-    driver.find_element_by_xpath('//*[@id="mainmenu"]/ul/li[1]/ul/li[1]/a').click()
+    driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[1]/ul/li[1]/a').click()
 
     try:
         tmp = 1
         name_list = []
         while 1:
-            name_list.append(driver.find_element_by_xpath('//*[@id="content"]/div/div[2]/div/table/tbody/tr[{}]/td[5]'.format(tmp)).text)
+            name_list.append(driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div/table/tbody/tr[{}]/td[5]'.format(tmp)).text)
             tmp += 1
     except:
         pass

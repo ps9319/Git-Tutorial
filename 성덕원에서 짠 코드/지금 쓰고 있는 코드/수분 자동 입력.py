@@ -26,7 +26,7 @@ def is_xpath_exist(dr, xpath):
 def put_auto(driver, name):
     # 날짜 클릭
     is_xpath_exist(driver, '//*[@id="start_dt"]')
-    driver.find_element_by_xpath('//*[@id="start_dt"]').click()
+    driver.find_element('xpath', '//*[@id="start_dt"]').click()
     # 월
     Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value(str(int(month)-1))
 
@@ -35,20 +35,20 @@ def put_auto(driver, name):
 
     # 입소자 명단 클릭
     is_xpath_exist(driver, '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]')
-    driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]').click()
+    driver.find_element('xpath', '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]').click()
 
     # 이름 입력
     is_xpath_exist(driver, '/html/body/span/span/span[1]/input')
-    driver.find_element_by_xpath('/html/body/span/span/span[1]/input').send_keys(name + Keys.ENTER)
+    driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys(name + Keys.ENTER)
 
     # 현재 날짜 존재 확인
     result = is_xpath_exist(driver, '//*[@id="content"]/div/div[2]/section[2]/table/tbody/tr/td[8]/table/tbody/tr[1]')
 
     # 날짜 클릭
     if result != 0:
-        driver.find_element_by_xpath(
+        driver.find_element('xpath',
         '//*[@id="content"]/div/div[2]/section[2]/table/tbody/tr/td[8]/table/tbody/tr[1]').click()
-        if driver.find_element_by_xpath('//*[@id="content"]/div/div[3]/table/tbody/tr[1]/td[2]/span[2]').is_displayed():
+        if driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[1]/td[2]/span[2]').is_displayed():
             driver.back()
         else:
             # 시간 선택
@@ -60,46 +60,44 @@ def put_auto(driver, name):
             # 분
             is_xpath_exist(driver, '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[1]')
             for i in range(0, 7):
-                Select(driver.find_element_by_xpath(
+                Select(driver.find_element('xpath',
                 '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[{}]'.format(i * 2 + 1))).select_by_index(
                 hour.get(str(i * 2 + 1)))
 
             # 분 선택
             for i in range(1, 8):
-                Select(driver.find_element_by_xpath(
+                Select(driver.find_element('xpath',
                 '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[{}]'.format(i * 2))).select_by_index(
                 minute.get(str(i * 2)))
 
             # 08시부터 17시까지
             for i in range(2, 7):
-                driver.find_element_by_xpath(
+                driver.find_element('xpath',
                 '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i)).clear()
 
-                driver.find_element_by_xpath(
+                driver.find_element('xpath',
                 '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i)).send_keys(
                 int(10 * random.randint(16, 18)))
 
             # 06시와 19시
             for i in range(2):
-                driver.find_element_by_xpath(
+                driver.find_element('xpath',
                 '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(6 * i + 1)).clear()
 
-                driver.find_element_by_xpath(
+                driver.find_element('xpath',
                 '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(6 * i + 1)).send_keys(
                 int(10 * random.randint(14, 15)))
 
             for i in range(4):
-                Select(driver.find_element_by_xpath(
+                Select(driver.find_element('xpath',
                     '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[{}]'.format(i + 15))).select_by_index(0)
 
-            for _ in range(2):
-                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[8]').input(0)
-                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[9]').input(0)
-
-
+            for i in range(2):
+                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i + 8)).clear()
+                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i + 8)).send_keys('0')
 
             # 저장
-            driver.find_element_by_xpath('//*[@id="content"]/div/div[2]/div[2]/button[4]').send_keys(Keys.ENTER)
+            driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div[2]/button[4]').send_keys(Keys.ENTER)
             window_pop = Alert(driver)
             window_pop.accept()
             is_xpath_exist(driver, '//*[@id="content"]/div/div[2]/div[2]/button[4]')
@@ -108,9 +106,9 @@ def put_auto(driver, name):
             driver.back()
             driver.back()
     elif is_xpath_exist(driver, '//*[@id="select2-seq_value-results"]/li') != 0:
-        driver.find_element_by_xpath(
+        driver.find_element('xpath',
             '/html/body/span/span/span[1]/input').clear()
-        driver.find_element_by_xpath(
+        driver.find_element('xpath',
             '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]').click()
     else:
         driver.back()
@@ -122,6 +120,7 @@ month = input("월을 입력하세요 : ")
 date = input("날짜를 입력하세요 : ")
 
 name_list = get_name_list.get_name()
+
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
@@ -135,14 +134,14 @@ loginID_3 = "fks1114"
 
 # 로그인
 is_xpath_exist(driver, '//*[@id="f_code"]')
-driver.find_element_by_xpath('//*[@id="f_code"]').send_keys(loginID_1)
-driver.find_element_by_xpath('//*[@id="id"]').send_keys(loginID_2)
-driver.find_element_by_xpath('//*[@id="pwd"]').send_keys(loginID_3)
-driver.find_element_by_xpath('//*[@id="content"]/section[2]/div[1]/div[2]/div/div[3]/a[1]').click()
+driver.find_element('xpath', '//*[@id="f_code"]').send_keys(loginID_1)
+driver.find_element('xpath', '//*[@id="id"]').send_keys(loginID_2)
+driver.find_element('xpath', '//*[@id="pwd"]').send_keys(loginID_3)
+driver.find_element('xpath', '//*[@id="content"]/section[2]/div[1]/div[2]/div/div[3]/a[1]').click()
 
 # 기록지 클릭
 is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a')
-driver.find_element_by_xpath('//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
+driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
 
 for i in range(len(name_list)):
     put_auto(driver, name_list[i])
