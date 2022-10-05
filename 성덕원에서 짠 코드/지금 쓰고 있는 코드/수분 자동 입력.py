@@ -92,6 +92,11 @@ def put_auto(driver, name):
                 Select(driver.find_element_by_xpath(
                     '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[{}]'.format(i + 15))).select_by_index(0)
 
+            for _ in range(2):
+                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[8]').input(0)
+                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[9]').input(0)
+
+
 
             # 저장
             driver.find_element_by_xpath('//*[@id="content"]/div/div[2]/div[2]/button[4]').send_keys(Keys.ENTER)
