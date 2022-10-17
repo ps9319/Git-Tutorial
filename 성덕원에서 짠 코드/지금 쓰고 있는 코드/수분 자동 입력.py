@@ -139,10 +139,6 @@ driver.find_element('xpath', '//*[@id="id"]').send_keys(loginID_2)
 driver.find_element('xpath', '//*[@id="pwd"]').send_keys(loginID_3)
 driver.find_element('xpath', '//*[@id="content"]/section[2]/div[1]/div[2]/div/div[3]/a[1]').click()
 
-driver.switch_to.window(driver.window_handles[-1])
-driver.close()
-driver.switch_to.window(driver.window_handles[-1])
-
 # 기록지 클릭
 is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
