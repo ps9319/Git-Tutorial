@@ -6,6 +6,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import warnings
 
+import get_name_list
+
 warnings.filterwarnings("ignore")
 
 
@@ -162,7 +164,7 @@ driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[4]/ul/li[5]/a').click()
 is_xpath_exist(driver, '//*[@id="conten"]/div/div[1]/div[2]/div[2]/span/span[1]/span/span[2]')
 driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div[2]/div[2]/span/span[1]/span/span[2]').click()
 """
-name_list = ['강복순', '강순남', '강재현', '고연님', '김갑순', '김귀임', '김남석', '김단례', '김도순', '김분임', '김성순', '김애덕', '김춘선', '김춘자', '남정순', '문복선', '박당녀', '박형봉', '방남례', '서옥순', '송덕순', '송영자', '심삼남', '양명순', '양소례', '염옥순', '우복인', '유복', '유승숙', '이건주', '이상수', '이선미', '이얌순', '이양님', '이정애', '임계순', '임순덕', '전신자', '전점례', '정귀모', '정중헌', '정해님', '조대섭', '주정애', '진병금', '최순옥', '최정자', '탁봉순', '하태순', '한순임', '허경임', '허야무']
+name_list = get_name_list.get_name()
 
 for i in range(len(name_list)):
     water_auto_check(driver, name_list[i])
