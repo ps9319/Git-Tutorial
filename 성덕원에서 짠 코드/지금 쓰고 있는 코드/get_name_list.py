@@ -31,7 +31,7 @@ def get_name():
     driver.find_element('xpath', '//*[@id="f_code"]').send_keys(loginID_1)
     driver.find_element('xpath', '//*[@id="id"]').send_keys(loginID_2)
     driver.find_element('xpath', '//*[@id="pwd"]').send_keys(loginID_3)
-    driver.find_element('xpath', '//*[@id="content"]/section[2]/div[1]/div[2]/div/div[3]/a[1]').click()
+    driver.find_element('xpath', '//*[@id="vipsFrm"]/div/section[1]/div/ul/li[2]/div/div/button').click()
 
     driver.switch_to.window(driver.window_handles[-1])
     driver.close()
