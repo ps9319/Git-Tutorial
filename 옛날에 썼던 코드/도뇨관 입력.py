@@ -40,7 +40,7 @@ driver.find_element("xpath", '//*[@id="f_code"]').send_keys(loginID_1)
 driver.find_element("xpath", '//*[@id="id"]').send_keys(loginID_2)
 driver.find_element("xpath", '//*[@id="pwd"]').send_keys(loginID_3)
 
-driver.find_element("xpath", '//*[@id="content"]/section[2]/div[1]/div[2]/div/div[3]/a[1]').click()
+driver.find_element("xpath", '//*[@id="vipsFrm"]/div/section[1]/div/ul/li[2]/div/div/button').click()
 
 driver.switch_to.window(driver.window_handles[-1])
 driver.close()
@@ -70,7 +70,7 @@ driver.find_element(By.LINK_TEXT, "1").click()
 
 #driver.find_element("xpath", '//*[@id="ui-datepicker-div"]/table/tbody/tr[1]/td[3]').click()
 driver.find_element("xpath", '//*[@id="content"]/div/div[2]/div[1]/span[1]/span[1]/span/span[2]').click()
-driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys("정중헌" + Keys.ENTER)
+driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys("김귀례" + Keys.ENTER)
 driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[1]/ul/li[5]/a/span').click()
 
 li_1 = [3,7,12,15,19,23]
@@ -99,10 +99,12 @@ while 1:
         for i in range(len(li_1)):
             ur_min = random.randint(1, 5)
             water = 50 * random.randint(4, 6)
+            """
             if i == 2:
                 ur_min = random.randint(1,3)
             elif i == 4:
                 ur_min = random.randint(9,11)
+            """
             # 시간
             Select(driver.find_element('xpath', '// *[ @ id = "urine_h"]')).select_by_index(li_1[i])
             # 분
