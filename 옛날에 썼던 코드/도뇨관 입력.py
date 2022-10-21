@@ -74,7 +74,7 @@ driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys("�
 driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[1]/ul/li[5]/a/span').click()
 
 li_1 = [6,12,15,18,23]
-li_2 = [1,7,11,14,18,22]
+li_2 = [1,5,10,13,17,21]
 
 while 1:
     #전체 삭제
