@@ -63,20 +63,64 @@ driver.find_element('xpath', '//*[@id="start_dt"]').click()
 Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[1]')).select_by_value("2022")
 
 #월
-Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value("6")
+Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value("8")
 
 #날짜
-driver.find_element(By.LINK_TEXT, "31").click()
+driver.find_element(By.LINK_TEXT, "1").click()
 
 #driver.find_element("xpath", '//*[@id="ui-datepicker-div"]/table/tbody/tr[1]/td[3]').click()
 driver.find_element("xpath", '//*[@id="content"]/div/div[2]/div[1]/span[1]/span[1]/span/span[2]').click()
-driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys("염봉수" + Keys.ENTER)
+driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys("정중헌" + Keys.ENTER)
 driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[1]/ul/li[5]/a/span').click()
 
-li_1 = [6,12,15,18,23]
-li_2 = [1,5,10,13,17,21]
+li_1 = [3,7,12,15,18,23]
+li_2 = [1,7,17]
 
 while 1:
+    if driver.find_element('xpath', '//*[@id="start_dt"]').get_attribute('value') == '2022-10-01':
+        break
+    if driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div[1]/span[2]').text != '':
+        # 전체 삭제
+        driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/ul/li[4]/a').click()
+        '//*[@id="content"]/div/div[3]/div[4]/div/div/ul/li[4]/a'
+        result5 = driver.switch_to.alert
+        result5.accept()
+        driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div[1]/div/a[2]/span').click()
+    else:
+        #전체 삭제
+        driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/ul/li[4]/a').click()
+        '//*[@id="content"]/div/div[3]/div[4]/div/div/ul/li[4]/a'
+        result5 = driver.switch_to.alert
+        result5.accept()
+
+        for i in range(3):
+            driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[5]/div/div[1]/div/div/div[{}]'.format(i+1)).click()
+
+        for i in range(len(li_1)):
+            ur_min = random.randint(1, 5)
+            water = 50 * random.randint(4, 6)
+            if i == 2:
+                ur_min = random.randint(1,3)
+            elif i == 4:
+                ur_min = random.randint(9,11)
+            # 시간
+            Select(driver.find_element('xpath', '// *[ @ id = "urine_h"]')).select_by_index(li_1[i])
+            # 분
+            Select(driver.find_element('xpath', '// *[ @ id = "urine_m"]')).select_by_index(ur_min)
+            driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/p/input').clear()
+            driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/p/input').send_keys(
+                str(water) + Keys.ENTER)
+
+            driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/ul/li[1]/a').click()
+
+        driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/p/input').clear()
+        driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/p/input').send_keys()
+
+        driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div[1]/div/a[2]/span').click()
+"""
+while 1:
+    if driver.find_element('xpath', '//*[@id="start_dt"]').get_attribute('value') == '2022-09-27':
+        break
     #전체 삭제
     driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/ul/li[4]/a').click()
     '//*[@id="content"]/div/div[3]/div[4]/div/div/ul/li[4]/a'
@@ -86,17 +130,13 @@ while 1:
     for i in range(3):
         driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[5]/div/div[1]/div/div/div[{}]'.format(i+1)).click()
 
-    for i in range(5):
-        ur_min = random.randint(1, 6)
-        water = 100 * random.randint(2, 4)
+    for i in range(len(li_2)):
+        ur_min = random.randint(1, 5)
+        water = 50 * random.randint(4, 6)
         if driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div[1]/span[2]').text != '':
-            water = 1000
-        if i == 1:
-            ur_min = random.randint(1,3)
-        elif i == 3:
-            ur_min = random.randint(7,12)
+            water = 3000
         # 시간
-        Select(driver.find_element('xpath', '// *[ @ id = "urine_h"]')).select_by_index(li_1[i])
+        Select(driver.find_element('xpath', '// *[ @ id = "urine_h"]')).select_by_index(li_2[i])
         # 분
         Select(driver.find_element('xpath', '// *[ @ id = "urine_m"]')).select_by_index(ur_min)
         driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/p/input').clear()
@@ -109,3 +149,4 @@ while 1:
     driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[4]/div/div/p/input').send_keys()
 
     driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div[1]/div/a[2]/span').click()
+"""
