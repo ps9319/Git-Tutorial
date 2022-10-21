@@ -63,7 +63,7 @@ driver.find_element('xpath', '//*[@id="start_dt"]').click()
 Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[1]')).select_by_value("2022")
 
 #월
-Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value("8")
+Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value("0")
 
 #날짜
 driver.find_element(By.LINK_TEXT, "1").click()
@@ -73,7 +73,7 @@ driver.find_element("xpath", '//*[@id="content"]/div/div[2]/div[1]/span[1]/span[
 driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys("정중헌" + Keys.ENTER)
 driver.find_element('xpath', '//*[@id="content"]/div/div[3]/div[1]/ul/li[5]/a/span').click()
 
-li_1 = [3,7,12,15,18,23]
+li_1 = [3,7,12,15,19,23]
 li_2 = [1,7,17]
 
 while 1:
