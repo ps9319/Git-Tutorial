@@ -42,12 +42,12 @@ def put_auto(driver, name):
     driver.find_element('xpath', '/html/body/span/span/span[1]/input').send_keys(name + Keys.ENTER)
 
     # 현재 날짜 존재 확인
-    result = is_xpath_exist(driver, '//*[@id="content"]/div/div[2]/section[2]/table/tbody/tr/td[8]/table/tbody/tr[1]')
+    result = is_xpath_exist(driver, '//*[@id="content"]/div/div[2]/section[1]/table/tbody/tr/td[8]/div/table/thead/tr/td[1]')
 
     # 날짜 클릭
     if result != 0:
         driver.find_element('xpath',
-        '//*[@id="content"]/div/div[2]/section[2]/table/tbody/tr/td[8]/table/tbody/tr[1]').click()
+        '//*[@id="content"]/div/div[2]/section[1]/table/tbody/tr/td[8]/div/table/thead/tr/td[1]').click()
         if driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[1]/td[2]/span[2]').is_displayed():
             driver.back()
         else:
