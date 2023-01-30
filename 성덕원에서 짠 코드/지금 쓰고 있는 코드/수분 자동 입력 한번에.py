@@ -118,10 +118,12 @@ def put_auto(driver, name):
 
 
 month = input("월을 입력하세요 : ")
-date = int(input("날짜를 입력하세요 : "))
-
+date = int(input("시작 날짜를 입력하세요 : "))
+op = int(input("끝 날짜를 입력하세요 : "))
+op = op - date + 1
 
 name_list = get_name_list.get_name()
+
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
@@ -148,7 +150,7 @@ driver.switch_to.window(driver.window_handles[-1])
 is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
 
-for j in range(14):
+for j in range(op):
     start = time.time()
     for i in range(len(name_list)):
         put_auto(driver, name_list[i])
