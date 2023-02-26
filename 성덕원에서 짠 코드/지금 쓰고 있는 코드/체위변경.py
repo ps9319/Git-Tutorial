@@ -46,16 +46,30 @@ def click_button(hour):
     return
 
 
+def in_and_out():
+    three = random.choice([True, False])
+    twenty = random.choice([True, False])
+    int_list = [6, 8, 10, 15, 17, 23]
+    if three:
+        result_list.remove(3)
+        result_list.append(4)
+        result_list.append(2)
+    if twenty:
+        result_list.remove(20)
+        result_list.append(21)
+        result_list.append(19)
+    for num in int_list:
+        if random.choice([True, False]):
+            result_list.append(num)
+    result_list.sort()
+    return
+
 # name = input("이름을 입력하세요 : ")
 name = '양소례'
 # year, month, date = map(int, input("년도와 월을 입력해주세요. : ex)2023 2 24 ").split())
-year, month, date = 2022, 6, 28
+year, month, date = 2022, 7, 1
 # end_date = input('끝 날짜를 입력해주세요 : ex) 2023-02-26 ')
-end_date = '2022-07-02'
-time_list = [1, 3, 5, 13, 18, 20, 22, 24]
-fixed_time_list = [7, 9, 11, 14, 16]
-result_list = time_list + fixed_time_list
-result_list.sort()
+end_date = '2022-07-11'
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
@@ -104,6 +118,11 @@ driver.find_element('xpath', '/html/body/div[3]/form/section[1]/div/div[2]/div/t
 driver.switch_to.window(driver.window_handles[-1])
 
 while 1:
+    time_list = [1, 3, 5, 13, 18, 20, 22, 24]
+    fixed_time_list = [7, 9, 11, 14, 16]
+    result_list = time_list + fixed_time_list
+    in_and_out()
+
     now_date = driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[2]/div[1]/div/input').get_attribute('value')
     if now_date == end_date:
         break
