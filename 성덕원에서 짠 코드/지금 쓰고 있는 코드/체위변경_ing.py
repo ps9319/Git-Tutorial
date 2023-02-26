@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -9,7 +8,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
 import warnings
-import get_name_list
 
 warnings.filterwarnings("ignore")
 
@@ -24,10 +22,40 @@ def is_xpath_exist(dr, xpath):
         return 0
 
 
+def click_button(hour):
+# td 3 4 5 == 좌측위 앙아위 우측위, td 7 8 == 침대 휠체어
+# tr == 시간
+    # 휠체어
+    if hour == fixed_time_list[0] or hour == fixed_time_list[2] or hour == fixed_time_list[4]:
+        driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[3]/div[5]/div/table/tbody/tr[{}]/td[{}]/span'.format(hour, 8)).click()
+    # 침대
+    elif hour == fixed_time_list[1] or hour == fixed_time_list[3]:
+        driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[3]/div[5]/div/table/tbody/tr[{}]/td[{}]/span'.format(hour, 7)).click()
+    else:
+        ran_num = random.randint(3, 5)
+        num_list = [3, 4, 5]
+        driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[3]/div[5]/div/table/tbody/tr[{}]/td[{}]/span'.format(hour, ran_num)).click()
+        try:
+            if_alert = Alert(driver)
+            if_alert.accept()
+            num_list.remove(ran_num)
+            driver.find_element('xpath','/html/body/form/div[2]/section[1]/div/div[3]/div[5]/div/table/tbody/tr[{}]/td[{}]/span'.format(hour, num_list[random.randint(0, 1)])).click()
+        except:
+            pass
+
+    return
+
+
 # name = input("이름을 입력하세요 : ")
 name = '양소례'
-# year, month, date = map(int, input("년도와 월을 입력해주세요. ex)2023 2 24").split())
-year, month, date = 2022, 6, 29
+# year, month, date = map(int, input("년도와 월을 입력해주세요. : ex)2023 2 24 ").split())
+year, month, date = 2022, 6, 28
+# end_date = input('끝 날짜를 입력해주세요 : ex) 2023-02-26 ')
+end_date = '2022-07-02'
+time_list = [1, 3, 5, 13, 18, 20, 22, 24]
+fixed_time_list = [7, 9, 11, 14, 16]
+result_list = time_list + fixed_time_list
+result_list.sort()
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
@@ -75,8 +103,25 @@ driver.find_element('xpath', '/html/body/div[3]/form/section[1]/div/div[2]/div/t
 # 화면 전환
 driver.switch_to.window(driver.window_handles[-1])
 
+while 1:
+    now_date = driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[2]/div[1]/div/input').get_attribute('value')
+    if now_date == end_date:
+        break
+    # 빨간 글씨일 경우 패스
+    if driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[2]/div[1]/span[2]').is_displayed():
+        driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[2]/div[1]/div/a[2]/span').click()
+        print(driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[2]/div[1]/div/a[2]/span').text)
+        continue
+    # 전체삭제
+    is_xpath_exist(driver, '/html/body/form/div[2]/section[1]/div/div[3]/div[4]/div/div/ul/li[2]/a')
+    driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[3]/div[4]/div/div/ul/li[2]/a').click()
+    window_pop = Alert(driver)
+    window_pop.accept()
 
-# 전체삭제
-driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[3]/div[4]/div/div/ul/li[2]/a').click()
-window_pop = Alert(driver)
-window_pop.accept()
+    is_xpath_exist(driver, '/html/body/form/div[2]/section[1]/div/div[3]/div[5]/div/table/tbody/tr[1]/td[3]/span/label')
+    for i in result_list:
+        click_button(i)
+    # 저장
+    driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[3]/div[4]/div/div/ul/li[1]/a').click()
+    # 다음 날짜
+    driver.find_element('xpath', '/html/body/form/div[2]/section[1]/div/div[2]/div[1]/div/a[2]').click()
