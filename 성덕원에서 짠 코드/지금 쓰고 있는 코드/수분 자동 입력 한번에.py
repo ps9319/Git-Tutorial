@@ -49,7 +49,7 @@ def put_auto(driver, name):
     if result != 0:
         driver.find_element('xpath',
         '//*[@id="content"]/div/div[2]/section[1]/table/tbody/tr/td[8]/div/table/thead/tr/td[1]').click()
-        if driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[1]/td[2]/span[2]').is_displayed():
+        if driver.find_element('xpath', '/html/body/div[3]/form/section/div/div[1]/div[2]/div[2]/span[2]').is_displayed():
             driver.back()
         else:
             # 시간 선택
@@ -59,49 +59,48 @@ def put_auto(driver, name):
             "14": random.randint(5, 7)}
 
             # 분
-            is_xpath_exist(driver, '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[1]')
+            is_xpath_exist(driver, '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/select[1]')
             for i in range(0, 7):
                 Select(driver.find_element('xpath',
-                '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[{}]'.format(i * 2 + 1))).select_by_index(
+                '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/select[{}]'.format(i * 2 + 1))).select_by_index(
                 hour.get(str(i * 2 + 1)))
-
             # 분 선택
             for i in range(1, 8):
                 Select(driver.find_element('xpath',
-                '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[{}]'.format(i * 2))).select_by_index(
+                '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/select[{}]'.format(i * 2))).select_by_index(
                 minute.get(str(i * 2)))
 
             # 08시부터 17시까지
             for i in range(2, 7):
                 driver.find_element('xpath',
-                '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i)).clear()
+                '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/input[{}]'.format(i)).clear()
 
                 driver.find_element('xpath',
-                '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i)).send_keys(
+                '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/input[{}]'.format(i)).send_keys(
                 int(10 * random.randint(16, 18)))
 
             # 06시와 19시
             for i in range(2):
                 driver.find_element('xpath',
-                '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(6 * i + 1)).clear()
+                '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/input[{}]'.format(6 * i + 1)).clear()
 
                 driver.find_element('xpath',
-                '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(6 * i + 1)).send_keys(
+                '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/input[{}]'.format(6 * i + 1)).send_keys(
                 int(10 * random.randint(14, 15)))
 
             for i in range(4):
                 Select(driver.find_element('xpath',
-                    '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/select[{}]'.format(i + 15))).select_by_index(0)
+                    '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/select[{}]'.format(i + 15))).select_by_index(0)
 
             for i in range(2):
-                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i + 8)).clear()
-                driver.find_element('xpath', '//*[@id="content"]/div/div[3]/table/tbody/tr[22]/td[3]/input[{}]'.format(i + 8)).send_keys('0')
+                driver.find_element('xpath', '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/input[{}]'.format(i + 8)).clear()
+                driver.find_element('xpath', '/html/body/div[3]/form/section/div/div[2]/div/table/tbody/tr[20]/td[3]/input[{}]'.format(i + 8)).send_keys('0')
 
             # 저장
-            driver.find_element('xpath', '//*[@id="content"]/div/div[2]/div[2]/button[4]').send_keys(Keys.ENTER)
+            driver.find_element('xpath', '/html/body/div[3]/form/section/div/div[1]/div[2]/div[3]/button[4]').send_keys(Keys.ENTER)
             window_pop = Alert(driver)
             window_pop.accept()
-            is_xpath_exist(driver, '//*[@id="content"]/div/div[2]/div[2]/button[4]')
+            is_xpath_exist(driver, '/html/body/div[3]/form/section/div/div[1]/div[2]/div[3]/button[4]')
 
             #시험
             driver.back()
@@ -123,7 +122,7 @@ op = int(input("끝 날짜를 입력하세요 : "))
 op = op - date + 1
 
 name_list = get_name_list.get_name()
-
+#name_list = ['강복순', '강순남', '강재현', '김갑순', '김귀임', '김남석', '김단례', '김도순', '김분임', '김성순', '김성임', '김순화', '김애덕', '김춘선', '김춘자', '박당녀', '박형봉', '서옥순', '송영자', '심삼남', '양소례', '우복인', '유복', '윤점례', '이상수', '이선미', '이얌순', '이양님', '이정애', '임계순', '임순덕', '전신자', '전점례', '정귀모', '정중헌', '정해님', '조대섭', '주순남', '주정애', '진병금', '진정님', '최순옥', '최영애', '탁봉순', '하태순', '한순임', '허경임', '허야무']
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
@@ -156,4 +155,3 @@ for j in range(op):
         put_auto(driver, name_list[i])
     date += 1
     print("날짜", date, "시간 :", time.time() - start, "초 걸림")
-
