@@ -141,6 +141,11 @@ driver.find_element('xpath', '//*[@id="id"]').send_keys(loginID_2)
 driver.find_element('xpath', '//*[@id="pwd"]').send_keys(loginID_3)
 driver.find_element('xpath', '//*[@id="vipsFrm"]/div/section[1]/div/ul/li[2]/div/div/button').click()
 
+driver.switch_to.window(driver.window_handles[-1])
+driver.close()
+driver.switch_to.window(driver.window_handles[-1])
+
+
 # 경관식 대상자 클릭
 is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[4]/ul/li[5]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[4]/ul/li[5]/a').click()
