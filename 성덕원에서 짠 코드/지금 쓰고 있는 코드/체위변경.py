@@ -64,12 +64,9 @@ def in_and_out():
     result_list.sort()
     return
 
-# name = input("이름을 입력하세요 : ")
-name = '양소례'
-# year, month, date = map(int, input("년도와 월을 입력해주세요. : ex)2023 2 24 ").split())
-year, month, date = 2022, 7, 1
-# end_date = input('끝 날짜를 입력해주세요 : ex) 2023-02-26 ')
-end_date = '2022-07-11'
+name = input("이름을 입력하세요 : ")
+year, month, date = map(int, input("년도와 월을 입력해주세요. : ex)2023 2 24 ").split())
+end_date = input('끝 날짜를 입력해주세요 : ex) 2023-02-26 ')
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
