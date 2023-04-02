@@ -1,0 +1,61 @@
+('C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+ '있는 코드\\프로그램 배포\\build\\AutomaticChangePosition\\AutomaticChangePosition.pkg',
+ {'BINARY': True,
+  'DATA': True,
+  'EXECUTABLE': True,
+  'EXTENSION': True,
+  'PYMODULE': True,
+  'PYSOURCE': True,
+  'PYZ': False,
+  'SPLASH': True},
+ [('PYZ-00.pyz',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+   '있는 코드\\프로그램 배포\\build\\AutomaticChangePosition\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+   '있는 코드\\프로그램 배포\\build\\AutomaticChangePosition\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+   '있는 코드\\프로그램 '
+   '배포\\build\\AutomaticChangePosition\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+   '있는 코드\\프로그램 '
+   '배포\\build\\AutomaticChangePosition\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+   '있는 코드\\프로그램 '
+   '배포\\build\\AutomaticChangePosition\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+   '있는 코드\\프로그램 '
+   '배포\\build\\AutomaticChangePosition\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'c:\\users\\user\\pycharmprojects\\pythonproject\\venv\\lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth__tkinter',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('AutomaticChangePosition',
+   'C:\\Users\\user\\PycharmProjects\\pythonProject\\성덕원 코드\\성덕원에서 짠 코드\\지금 쓰고 '
+   '있는 코드\\프로그램 배포\\AutomaticChangePosition.py',
+   'PYSOURCE')],
+ True,
+ False,
+ False,
+ [],
+ None,
+ None,
+ None)
