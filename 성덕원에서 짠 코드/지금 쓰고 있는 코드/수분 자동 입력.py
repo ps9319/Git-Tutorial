@@ -1,4 +1,3 @@
-import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -7,11 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
-import warnings
 import get_name_list
-
-warnings.filterwarnings("ignore")
-
 
 def is_xpath_exist(dr, xpath):
     try:
@@ -21,8 +16,6 @@ def is_xpath_exist(dr, xpath):
         )
     except:
         return 0
-
-
 def put_auto(driver, name):
     # 날짜 클릭
     is_xpath_exist(driver, '//*[@id="start_dt"]')
@@ -114,13 +107,10 @@ def put_auto(driver, name):
         driver.back()
 
 
-start = time.time()
-
 month = input("월을 입력하세요 : ")
 date = input("날짜를 입력하세요 : ")
 
 name_list = get_name_list.get_name()
-
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
@@ -149,5 +139,3 @@ driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
 
 for i in range(len(name_list)):
     put_auto(driver, name_list[i])
-
-print("시간 :", time.time() - start, "초 걸림")

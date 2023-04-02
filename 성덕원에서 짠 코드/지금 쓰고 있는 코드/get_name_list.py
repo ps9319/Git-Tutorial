@@ -3,8 +3,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-
-
 def is_xpath_exist(dr, xpath):
     try:
         # xpath가 로딩될 때 까지 10초 대기
@@ -13,8 +11,6 @@ def is_xpath_exist(dr, xpath):
         )
     except:
         return 0
-
-
 def get_name():
     driver = webdriver.Chrome()
     url = 'http://www.lcms.or.kr/'

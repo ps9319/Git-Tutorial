@@ -7,10 +7,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
-import warnings
-
-warnings.filterwarnings("ignore")
-
 
 def is_xpath_exist(dr, xpath):
     try:
@@ -20,8 +16,6 @@ def is_xpath_exist(dr, xpath):
         )
     except:
         return 0
-
-
 def click_button(hour):
 # td 3 4 5 == 좌측위 앙아위 우측위, td 7 8 == 침대 휠체어
 # tr == 시간
@@ -44,8 +38,6 @@ def click_button(hour):
             pass
 
     return
-
-
 def in_and_out():
     three = random.choice([True, False])
     twenty = random.choice([True, False])

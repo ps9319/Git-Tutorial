@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -8,11 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import random
-import warnings
 import get_name_list
-
-warnings.filterwarnings("ignore")
-
 
 def is_xpath_exist(dr, xpath):
     try:
@@ -22,8 +17,6 @@ def is_xpath_exist(dr, xpath):
         )
     except:
         return 0
-
-
 def put_auto(driver, name):
     # 날짜 클릭
     is_xpath_exist(driver, '//*[@id="start_dt"]')
@@ -114,15 +107,12 @@ def put_auto(driver, name):
         driver.back()
 
 
-
-
 month = input("월을 입력하세요 : ")
 date = int(input("시작 날짜를 입력하세요 : "))
 op = int(input("끝 날짜를 입력하세요 : "))
 op = op - date + 1
 
 name_list = get_name_list.get_name()
-#name_list = ['강복순', '강순남', '강재현', '김갑순', '김귀임', '김남석', '김단례', '김도순', '김분임', '김성순', '김성임', '김순화', '김애덕', '김춘선', '김춘자', '박당녀', '박형봉', '서옥순', '송영자', '심삼남', '양소례', '우복인', '유복', '윤점례', '이상수', '이선미', '이얌순', '이양님', '이정애', '임계순', '임순덕', '전신자', '전점례', '정귀모', '정중헌', '정해님', '조대섭', '주순남', '주정애', '진병금', '진정님', '최순옥', '최영애', '탁봉순', '하태순', '한순임', '허경임', '허야무']
 
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
@@ -150,8 +140,6 @@ is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
 
 for j in range(op):
-    start = time.time()
     for i in range(len(name_list)):
         put_auto(driver, name_list[i])
     date += 1
-    print("날짜", date, "시간 :", time.time() - start, "초 걸림")

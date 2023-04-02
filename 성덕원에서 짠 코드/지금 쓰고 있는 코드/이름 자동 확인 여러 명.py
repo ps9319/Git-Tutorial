@@ -4,9 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import warnings
 import get_name_list
-warnings.filterwarnings("ignore")
 
 def is_xpath_exist(dr, xpath):
     try:
@@ -17,8 +15,6 @@ def is_xpath_exist(dr, xpath):
         return True
     except:
         return False
-
-
 def input_month(op):
     while 1:
         if op == 1:
@@ -33,8 +29,6 @@ def input_month(op):
                 return end_month
             else:
                 print("다시 입력해주세요")
-
-
 def input_date(op):
     while 1:
         if op == 1:
@@ -49,8 +43,6 @@ def input_date(op):
                 return end_date
             else:
                 print("다시 입력해주세요")
-
-
 def name_auto_check(driver, name):
     # 입소자 명단 클릭
     is_xpath_exist(driver, '//*[@id="content"]/div/div[1]/div[2]/div[2]/span/span[1]/span/span[2]')
@@ -123,12 +115,13 @@ start_date = input_date(1)
 end_month = input_month(2)
 end_date = input_date(2)
 
+name_list = get_name_list.get_name()
+
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
 driver.get(url)
 driver.maximize_window()
 driver.implicitly_wait(10)
-
 
 loginID_1 = "sdwon"
 loginID_2 = "fks6628"
@@ -145,12 +138,9 @@ driver.switch_to.window(driver.window_handles[-1])
 driver.close()
 driver.switch_to.window(driver.window_handles[-1])
 
-
 # 경관식 대상자 클릭
 is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[4]/ul/li[5]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[4]/ul/li[5]/a').click()
-
-name_list = get_name_list.get_name()
 
 for i in range(len(name_list)):
     name_auto_check(driver, name_list[i])

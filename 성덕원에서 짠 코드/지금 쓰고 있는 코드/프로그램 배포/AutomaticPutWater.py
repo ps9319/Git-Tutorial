@@ -249,12 +249,3 @@ for j in range(end_date):
         put_auto(driver, name_list[i])
     start_date += 1
     print("날짜", start_date, "시간 :", time.time() - start, "초 걸림")
-
-
-
-
-
-
-
-
-

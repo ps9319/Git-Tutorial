@@ -4,12 +4,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import warnings
-
 import get_name_list
-
-warnings.filterwarnings("ignore")
-
 
 def is_xpath_exist(dr, xpath):
     try:
@@ -20,8 +15,6 @@ def is_xpath_exist(dr, xpath):
         return True
     except:
         return False
-
-
 def input_month(op):
     while 1:
         if op == 1:
@@ -36,8 +29,6 @@ def input_month(op):
                 return end_month
             else:
                 print("다시 입력해주세요")
-
-
 def input_date(op):
     while 1:
         if op == 1:
@@ -52,8 +43,6 @@ def input_date(op):
                 return end_date
             else:
                 print("다시 입력해주세요")
-
-
 def water_auto_check(driver, name):
 
     # 입소자 명단 클릭
@@ -160,15 +149,10 @@ driver.switch_to.window(driver.window_handles[-1])
 driver.close()
 driver.switch_to.window(driver.window_handles[-1])
 
-
 # 경관식 대상자 클릭
 is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[4]/ul/li[5]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[4]/ul/li[5]/a').click()
-"""
-# 입소자 명단 클릭
-is_xpath_exist(driver, '//*[@id="conten"]/div/div[1]/div[2]/div[2]/span/span[1]/span/span[2]')
-driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div[2]/div[2]/span/span[1]/span/span[2]').click()
-"""
+
 name_list = get_name_list.get_name()
 
 for i in range(len(name_list)):
