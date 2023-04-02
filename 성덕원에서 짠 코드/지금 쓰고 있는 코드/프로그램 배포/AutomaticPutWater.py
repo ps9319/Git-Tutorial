@@ -161,7 +161,7 @@ def put_auto(driver, name):
 window = tk.Tk()
 window.title("수분 자동 입력기")
 window.geometry("325x110-700+400")
-#window.resizable(False, False)
+window.resizable(False, False)
 
 loginID_1 = "sdwon"
 loginID_2 = StringVar()
