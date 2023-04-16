@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -244,8 +243,6 @@ is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
 
 for j in range(end_date):
-    start = time.time()
     for i in range(len(name_list)):
         put_auto(driver, name_list[i])
     start_date += 1
-    print("날짜", start_date, "시간 :", time.time() - start, "초 걸림")
