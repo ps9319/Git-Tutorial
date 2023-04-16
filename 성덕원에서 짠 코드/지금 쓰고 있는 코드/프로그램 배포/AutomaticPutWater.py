@@ -211,7 +211,7 @@ execute_button.pack_forget()
 
 window.mainloop()
 name_list = get_name()
-
+name_list = ['강복순', '강재현', '김갑순']
 driver = webdriver.Chrome()
 url = 'http://www.lcms.or.kr/'
 driver.get(url)
