@@ -198,7 +198,7 @@ if start_month % 3 == 0:
 else:
     tr = start_month // 3 + 1
     td = start_month % 3
-driver.find_element('xpath', '/html/body/div[4]/table/tbody/tr[{}]/td[{}]'.format(tr, td)).click()
+driver.find_element('xpath', '/html/body/div[5]/table/tbody/tr[{}]/td[{}]'.format(tr, td)).click()
 driver.find_element('xpath', '/html/body/div[3]/form/section[1]/div/div[2]/div/table/tbody/tr[1]/td[{}]'.format(start_date + 1)).click()
 # 화면 전환
 driver.switch_to.window(driver.window_handles[-1])
