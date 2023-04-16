@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -18,15 +20,6 @@ def is_xpath_exist(dr, xpath):
     except:
         return 0
 def put_auto(driver, name):
-    # 날짜 클릭
-    is_xpath_exist(driver, '//*[@id="start_dt"]')
-    driver.find_element('xpath', '//*[@id="start_dt"]').click()
-    # 월
-    Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value(str(int(month)-1))
-
-    # 날짜
-    driver.find_element(By.LINK_TEXT, str(date)).click()
-
     # 입소자 명단 클릭
     is_xpath_exist(driver, '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]')
     driver.find_element('xpath', '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]').click()
@@ -140,6 +133,16 @@ is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
 
 for j in range(op):
+    time.sleep(3)
+    # 날짜 클릭
+    is_xpath_exist(driver, '//*[@id="start_dt"]')
+    driver.find_element('xpath', '//*[@id="start_dt"]').click()
+    # 월
+    Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value(
+        str(int(month) - 1))
+
+    # 날짜
+    driver.find_element(By.LINK_TEXT, str(date)).click()
     for i in range(len(name_list)):
         put_auto(driver, name_list[i])
     date += 1
