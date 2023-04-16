@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
@@ -68,18 +69,9 @@ def get_name():
     return name_list
 def put_auto(driver, name):
     global start_date
-    # 날짜 클릭
-    is_xpath_exist(driver, '//*[@id="start_dt"]')
-    driver.find_element('xpath', '//*[@id="start_dt"]').click()
-    # 월
-    Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value(str(int(month)-1))
-
-    # 날짜
-    driver.find_element(By.LINK_TEXT, str(start_date)).click()
-
     # 입소자 명단 클릭
-    is_xpath_exist(driver, '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]')
-    driver.find_element('xpath', '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]').click()
+    is_xpath_exist(driver, '/html/body/div[3]/form/section/div/div[1]/div[2]/div[3]/div[1]/span/span[1]/span/span[2]')
+    driver.find_element('xpath', '/html/body/div[3]/form/section/div/div[1]/div[2]/div[3]/div[1]/span/span[1]/span/span[2]').click()
 
     # 이름 입력
     is_xpath_exist(driver, '/html/body/span/span/span[1]/input')
@@ -155,7 +147,6 @@ def put_auto(driver, name):
             '//*[@id="content"]/div/div[1]/div[2]/div[2]/div/span/span[1]/span/span[2]').click()
     else:
         driver.back()
-
 
 window = tk.Tk()
 window.title("수분 자동 입력기")
@@ -243,6 +234,15 @@ is_xpath_exist(driver, '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a')
 driver.find_element('xpath', '//*[@id="mainmenu"]/ul/li[3]/ul/li[1]/a').click()
 
 for j in range(end_date):
+    time.sleep(3)
+    # 날짜 클릭
+    is_xpath_exist(driver, '//*[@id="start_dt"]')
+    driver.find_element('xpath', '//*[@id="start_dt"]').click()
+    # 월
+    Select(driver.find_element('xpath', '//*[@id="ui-datepicker-div"]/div[1]/div/select[2]')).select_by_value(
+        str(int(month) - 1))
+    # 날짜
+    driver.find_element(By.LINK_TEXT, str(start_date)).click()
     for i in range(len(name_list)):
         put_auto(driver, name_list[i])
     start_date += 1
